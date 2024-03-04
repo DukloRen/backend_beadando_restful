@@ -26,7 +26,7 @@ export class BookController {
   }
 
   @Delete('/:id')
-  deleteMessage(@Param('id') id: string) {
+  deleteBook(@Param('id') id: string) {
     const book = this.bookService.getSpecificBookByID(id);
     if (!book){
       throw new NotFoundException()
@@ -36,11 +36,7 @@ export class BookController {
   }
 
   @Put('/:id')
-  bookUpdate(@Param('id') id: string, @Body() body: BookDTO){
-    const book = this.bookService.getSpecificBookByID(id);
-    if(!book){
-      throw new NotFoundException()
-    }
-    this.bookService.bookUpdate(id, body);
+  updateBook(@Param('id') id: string, @Body() body: BookDTO) {
+    return this.bookService.updateBook(id, body);
   }
 }

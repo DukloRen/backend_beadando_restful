@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Books } from "./books.model";
 import { BookDTO } from "./books.dto";
 
@@ -59,9 +59,12 @@ export class BookService {
     this.books.splice(index,1);
   }
 
-  public bookUpdate(id: string, input: BookDTO){
-    const book = this.getSpecificBookByID(id)
-        Object.assign(book, input)
-        return book;
+  public updateBook(id: string, input: BookDTO){
+    const book = this.getSpecificBookByID(id);
+    if (!book) {
+      throw new NotFoundException();
+    }
+    Object.assign(book, input);
+    return book;
   }
 }

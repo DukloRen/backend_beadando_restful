@@ -21,7 +21,7 @@ DELETE http://localhost:3000/books/0.7102482976026727
 
 ###
 
-PUT http://localhost:3000/books/8
+PUT http://localhost:3000/books/4
 Content-Type: application/json
 
 {
