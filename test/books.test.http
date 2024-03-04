@@ -1,0 +1,31 @@
+GET http://localhost:3000/books
+
+###
+
+GET http://localhost:3000/books/1
+
+###
+
+POST http://localhost:3000/books
+Content-Type:application/json
+
+{
+  "title": "Állatfarm",
+  "author": "George Orwell",
+  "publishing_year": 1945
+}
+
+###
+
+DELETE http://localhost:3000/books/0.7102482976026727
+
+###
+
+PUT http://localhost:3000/books/8
+Content-Type: application/json
+
+{
+  "title" : "Orwell George",
+  "author" : "Farmállat",
+  "publishing_year" : 4519
+}
