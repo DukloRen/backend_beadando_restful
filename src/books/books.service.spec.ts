@@ -2,7 +2,7 @@ import { BookService } from './books.service';
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotFoundException } from '@nestjs/common';
 
-describe('TodoService', () => {
+describe('BookService', () => {
   let bookService:BookService;
 
   beforeEach(async () => {

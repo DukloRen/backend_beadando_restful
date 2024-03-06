@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { BookService } from "./books.service";
 import { BookDTO } from "./books.dto";
 
@@ -13,11 +13,7 @@ export class BookController {
 
   @Get('/:id')
   getSpecificBookByID(@Param('id') id: string){
-    const book = this.bookService.getSpecificBookByID(id);
-    if(!book){
-      throw new NotFoundException();
-    }
-    return book;
+    return this.bookService.getSpecificBookByID(id);
   }
 
   @Post()
@@ -27,12 +23,7 @@ export class BookController {
 
   @Delete('/:id')
   deleteBook(@Param('id') id: string) {
-    const book = this.bookService.getSpecificBookByID(id);
-    if (!book){
-      throw new NotFoundException()
-    }else {
       this.bookService.deleteBook(id)
-    }
   }
 
   @Put('/:id')

@@ -39,7 +39,13 @@ export class BookService {
   }
 
   public getSpecificBookByID(id: string) {
-    return this.books.find((book ) => book.id === id);
+    const book = this.books.find((book ) => book.id === id);
+    if (!book) {
+      throw new NotFoundException();//404
+    } else {
+      return book;
+    }
+
   }
 
   public postBook(bookDTO: BookDTO) {
@@ -54,7 +60,7 @@ export class BookService {
   public deleteBook(id: string){
     const index = this.books.findIndex((book)=>book.id === id)
     if (index === -1){
-      return;
+      throw new NotFoundException();//404
     }
     this.books.splice(index,1);
   }
